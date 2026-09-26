@@ -123,27 +123,27 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header className="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-4 xl:px-8">
+        <div className="flex items-center justify-between h-16 gap-2">
           
           {/* ZONE 1: BRAND WORDMARK */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 flex-shrink-0">
             <button 
               onClick={() => onSelectTab('dashboard')} 
               className="flex items-center gap-2.5 text-left group focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 rounded-md"
             >
-              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-700 flex items-center justify-center text-white shadow-md shadow-cyan-500/20 group-hover:scale-105 transition-transform duration-150">
+              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-700 flex items-center justify-center text-white shadow-md shadow-cyan-500/20 group-hover:scale-105 transition-transform duration-150 flex-shrink-0">
                 <ShieldAlert className="w-5 h-5 text-white" />
               </div>
-              <span className="text-xl font-bold tracking-tight text-white flex items-center gap-1.5">
+              <span className="text-xl font-bold tracking-tight text-white flex items-center gap-1.5 whitespace-nowrap">
                 Mine<span className="text-cyan-400">Safe</span>
-                <span className="text-[10px] uppercase tracking-wider px-1.5 py-0.5 rounded bg-cyan-950/70 text-cyan-300 border border-cyan-700/50 font-medium">IoT</span>
+                <span className="hidden sm:inline text-[10px] uppercase tracking-wider px-1.5 py-0.5 rounded bg-cyan-950/70 text-cyan-300 border border-cyan-700/50 font-medium">IoT</span>
               </span>
             </button>
           </div>
 
           {/* ZONE 2: PRIMARY NAVIGATION LINKS */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1.5 flex-1 min-w-0 overflow-x-auto no-scrollbar">
             {navLinks.map((item) => {
               const isActive = currentTab === item.id;
               return (
@@ -153,14 +153,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                     onSelectTab(item.id);
                     soundAlert.playFeedbackBeep();
                   }}
-                  className={`flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg transition-colors whitespace-nowrap ${
+                  title={item.label}
+                  className={`flex items-center gap-2 px-2.5 xl:px-3 py-2 text-sm font-medium rounded-lg transition-colors whitespace-nowrap flex-shrink-0 ${
                     isActive
                       ? 'bg-slate-800 text-cyan-400 shadow-sm border border-slate-700'
                       : 'text-slate-300 hover:text-white hover:bg-slate-900/60'
                   }`}
                 >
                   {item.icon}
-                  <span>{item.label}</span>
+                  <span className="hidden xl:inline">{item.label}</span>
                   {item.badge !== undefined && (
                     <span className="ml-1 px-1.5 py-0.2 text-xs font-semibold rounded-full bg-rose-950 text-rose-300 border border-rose-800/80">
                       {item.badge}
@@ -172,7 +173,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </nav>
 
           {/* ZONE 3: ACTIONS & USER PROFILE */}
-          <div className="hidden md:flex items-center gap-2.5">
+          <div className="hidden lg:flex items-center gap-1.5 xl:gap-2.5 flex-shrink-0">
             {/* Firebase Realtime Database Status */}
             <div 
               title={isFirebaseConnected ? "Conectado a Firebase Realtime Database: https://minefase-fc5f5-default-rtdb.firebaseio.com/" : "Conectando a RTDB..."}
@@ -304,7 +305,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Mobile menu trigger button */}
-          <div className="flex md:hidden items-center gap-2">
+          <div className="flex lg:hidden items-center gap-2 flex-shrink-0">
             <button
               onClick={handleToggleSound}
               className="p-2 text-slate-400 hover:text-white"
@@ -325,7 +326,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-slate-900 border-b border-slate-800 px-4 pt-3 pb-5 space-y-3">
+        <div className="lg:hidden bg-slate-900 border-b border-slate-800 px-4 pt-3 pb-5 space-y-3">
           <div className="grid grid-cols-1 gap-1">
             {navLinks.map((item) => {
               const isActive = currentTab === item.id;
