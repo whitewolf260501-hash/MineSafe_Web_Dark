@@ -522,7 +522,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({
                 </button>
               </div>
               <p className="text-[10px] text-slate-400 mt-1">
-                Clave inicial por defecto: <code className="text-cyan-300 bg-slate-950 px-1 py-0.5 rounded">admin123</code> (Admin/SuperAdmin) o <code className="text-cyan-300 bg-slate-950 px-1 py-0.5 rounded">1234</code> (Operadores).
+                Clave inicial por defecto: <code className="text-cyan-300 bg-slate-950 px-1 py-0.5 rounded"></code> (Admin/SuperAdmin) o <code className="text-cyan-300 bg-slate-950 px-1 py-0.5 rounded"></code> (Operadores).
               </p>
             </div>
 
