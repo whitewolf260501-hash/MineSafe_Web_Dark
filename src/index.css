@@ -37,6 +37,15 @@
   background: #0284c7;
 }
 
+/* Utility to allow horizontal scroll without showing a scrollbar (e.g. navbar links) */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* Industrial tech subtle background grid */
 .tech-grid-pattern {
   background-size: 40px 40px;
